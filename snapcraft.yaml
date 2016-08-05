@@ -1,0 +1,22 @@
+name: jq
+version: 1.5
+summary: jq is a lightweight and flexible command-line JSON processor.
+description: jq is like sed for JSON data - you can use it to slice and filter and map and transform structured data with the same ease that sed, awk, grep and friends let you play with text.
+confinement: strict
+
+apps:
+  jq:
+    command: bin/jq
+
+parts:
+  jq:
+    plugin: autotools
+    source: https://github.com/stedolan/jq/releases/download/jq-1.5/jq-1.5.tar.gz
+    filesets:
+      binaries:
+       - bin/jq
+       - lib/libjq.so*
+    stage:
+      - $binaries
+    snap:
+      - $binaries
